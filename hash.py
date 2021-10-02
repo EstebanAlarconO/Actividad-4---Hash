@@ -1,13 +1,33 @@
 import sys
+def operaciones(texto):
+    resultado = ''
+    caracteres = []
+    for letra in texto:
+        caracteres.append(ord(letra))
 
+    if (len(caracteres) < 25):
+        #aumentar cantidad de caracteres
+        for i in range(0, 24-len(caracteres)):
+            caracteres.append()
+    #elif(len(caracteres) > 25):
+        #disminuir la cantidad de caracteres
+        
+    #else:
+        #cantidad de caracteres ajustada al largo
 
-def hash_archivo(archivo):
+    return resultado
+
+def hash(argumento, tipo):
+
+    if(tipo == 'archivo'):
+        #abrir y recorrer archivo
+        return 0 
+
+    elif(tipo == 'texto'):
+        return operaciones(argumento)
 
     return 0
 
-def hash_texto(string):
-
-    return 0
 def comprobacion(entrada):
 
     if(len(entrada) < 2 | len(entrada) > 2):
@@ -24,17 +44,14 @@ def comprobacion(entrada):
         except IOError as e:
             return False
 
+if __name__ == '__main__':
+    comprobar = comprobacion(sys.argv)
 
-comprobar = comprobacion(sys.argv)
+    if(comprobar == False):
+        print(hash(sys.argv[1], 'texto'))
 
-if(comprobar == False):
+    elif(comprobacion == True):
+        print(hash(sys.argv[1], 'archivo'))
 
-    print(hash_texto(sys.argv[1]))
-
-elif(comprobacion == True):
-
-    print(hash_texto(sys.argv[1]))
-
-elif(comprobar == 'Error'):
-
-    print('Error')
+    elif(comprobar == 'Error'):
+        print('Error')
