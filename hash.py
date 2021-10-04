@@ -1,20 +1,37 @@
 import sys
-def operaciones(texto):
+
+def operaciones(lista):
     resultado = ''
+    for i in range(0,2):
+        for i in range(len(lista)):
+            lista[i] = lista[i]*23
+            lista[i] = lista[i]%64
+            lista[i] = lista[i]+42
+
+    for elemento in lista:
+        if(elemento%2 == 0):
+            resultado += chr(elemento+1)
+        else:
+            resultado += chr(elemento-1) 
+            
+    return resultado
+def adaptacion(texto):
     caracteres = []
     for letra in texto:
         caracteres.append(ord(letra))
 
     if (len(caracteres) < 25):
         #aumentar cantidad de caracteres
-        for i in range(0, 24-len(caracteres)):
-            caracteres.append()
+        for i in range(0, 25-len(caracteres)):
+            add = int((caracteres[i] + caracteres[0])/2)
+            caracteres.append(add)
     #elif(len(caracteres) > 25):
         #disminuir la cantidad de caracteres
         
     #else:
         #cantidad de caracteres ajustada al largo
 
+    resultado = operaciones(caracteres)
     return resultado
 
 def hash(argumento, tipo):
@@ -24,7 +41,7 @@ def hash(argumento, tipo):
         return 0 
 
     elif(tipo == 'texto'):
-        return operaciones(argumento)
+        return adaptacion(argumento)
 
     return 0
 
