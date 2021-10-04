@@ -25,11 +25,13 @@ def adaptacion(texto):
         for i in range(0, 25-len(caracteres)):
             add = int((caracteres[i] + caracteres[0])/2)
             caracteres.append(add)
-    #elif(len(caracteres) > 25):
+    elif(len(caracteres) > 25):
         #disminuir la cantidad de caracteres
-        
-    #else:
-        #cantidad de caracteres ajustada al largo
+        for i in range(0, len(caracteres)-25):
+            if(i%2 == 0):
+                caracteres.pop(0)
+            else: 
+                caracteres.pop(-1)
 
     resultado = operaciones(caracteres)
     return resultado
@@ -37,13 +39,16 @@ def adaptacion(texto):
 def hash(argumento, tipo):
 
     if(tipo == 'archivo'):
-        #abrir y recorrer archivo
-        return 0 
-
+        passw = []
+        with open(argumento, "r") as archivo:
+            lista = [linea.rstrip() for linea in archivo]
+        for pw in lista:
+            passw.append(adaptacion(pw))
+        #print(len(passw)) 
+        return passw
     elif(tipo == 'texto'):
         return adaptacion(argumento)
 
-    return 0
 
 def comprobacion(entrada):
 
@@ -63,12 +68,12 @@ def comprobacion(entrada):
 
 if __name__ == '__main__':
     comprobar = comprobacion(sys.argv)
-
     if(comprobar == False):
         print(hash(sys.argv[1], 'texto'))
 
-    elif(comprobacion == True):
-        print(hash(sys.argv[1], 'archivo'))
+    elif(comprobar == True):
+        for i in hash(sys.argv[1], 'archivo'):
+            print(i)
 
     elif(comprobar == 'Error'):
         print('Error')
