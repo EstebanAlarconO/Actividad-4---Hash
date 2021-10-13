@@ -40,7 +40,7 @@ def operaciones(lista):
 def adaptacion(texto):
     caracteres = []
     if  (len(texto) == 0):
-        return 'Error'
+        return 'Linea vacía'
 
     for letra in texto:
         caracteres.append(ord(letra))
