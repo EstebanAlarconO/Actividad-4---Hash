@@ -37,7 +37,7 @@ if __name__ == '__main__':
                     print ("{:<10} {:<10}".format(entropia(texto), texto))
 
         elif(opcion == '3'):
-            exit()
+            flag = False
 
         else:
             print('Debe ingresar una opcion valida\n')   
