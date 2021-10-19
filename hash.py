@@ -27,7 +27,7 @@ if __name__ == '__main__':
                 #Se imprime resultado por resultado en consola correspondientes a cada linea del archivo
                 for i in hash(sys.argv[1], 'archivo'):
                     print(i)
-
+            flag = False
         #Presentación de resultados de la forma Entropia | Texto entrada, por consola (STDOUT)
         elif(opcion == '2'):
             if(comprobar == False):
@@ -41,7 +41,7 @@ if __name__ == '__main__':
                 print ("{:<10} {:<1} {:<10}".format('Entropia','|', 'Texto entrada'))
                 for texto in lista:
                     print ("{:<10} {:<1} {:<10}".format(entropia(texto), '|', texto))
-
+            flag = False
         elif(opcion == '3'):
             flag = False
 
